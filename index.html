@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>星列防衛</title>
+    <style>
+      :root { color-scheme: dark; }
+      * { box-sizing: border-box; }
+      html, body { margin: 0; height: 100%; background: #0c1522; color: #e8efe6; font-family: sans-serif; }
+      body { display: flex; flex-direction: column; min-height: 100dvh; }
+      header { display: flex; flex-wrap: wrap; gap: 8px 14px; align-items: center; padding: 8px 12px; font-size: 14px; }
+      header strong { font-variant-numeric: tabular-nums; }
+      button { font: inherit; color: inherit; background: #1b3348; border: 1px solid #3d5a73; border-radius: 6px; padding: 6px 10px; }
+      main { flex: 1; min-height: 0; display: grid; place-items: center; padding: 0 12px 8px; }
+      .stage { position: relative; width: min(100%, 480px); }
+      canvas { width: 100%; height: auto; display: block; background: #102033; touch-action: none; }
+      #overlay { position: absolute; inset: 0; display: grid; place-items: center; background: rgb(12 21 34 / 72%); text-align: center; }
+      #overlay[hidden] { display: none; }
+      #overlay p { margin: 0 0 10px; }
+      nav { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px; padding: 0 12px 12px; }
+      nav button { min-height: 44px; }
+    </style>
+  </head>
+  <body>
+    <header>
+      <span>得点 <strong id="score">0</strong></span>
+      <span>最高 <strong id="high">0</strong></span>
+      <span>残機 <strong id="lives">3</strong></span>
+      <span>波 <strong id="wave">1</strong></span>
+      <span>連続 <strong id="chain">—</strong></span>
+      <span>拡散 <strong id="power">—</strong></span>
+      <button type="button" id="mute">消音</button>
+    </header>
+    <main>
+      <div class="stage">
+        <canvas id="field" width="480" height="560"></canvas>
+        <div id="overlay">
+          <div>
+            <p><strong>星列防衛</strong><br /><span>スペースではじめる</span></p>
+            <button type="button" id="start">はじめる</button>
+          </div>
+        </div>
+      </div>
+    </main>
+    <nav>
+      <button type="button" data-hold="left">左</button>
+      <button type="button" data-hold="fire">射撃</button>
+      <button type="button" data-hold="right">右</button>
+    </nav>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>
